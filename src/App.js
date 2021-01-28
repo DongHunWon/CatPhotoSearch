@@ -3,7 +3,7 @@ console.log("app is running!");
 class App {
   $target = null;
   data = [];
-
+ 
   constructor($target) {
     this.$target = $target;
 
@@ -11,11 +11,14 @@ class App {
       $target,
       onSearch: keyword => {
         api.fetchCats(keyword).then(({ data }) => this.setState(data));
-      },
-      onRandom: () => {
-        api.random().then(({ data }) => this.setState(data));
       }
     });
+
+    this.searchRandom = new SearchRandom({
+      onRandom: () => {
+        api.random().then(({ data }) => this.setState(data));
+      },
+    })
 
     this.searchResult = new SearchResult({
       $target,

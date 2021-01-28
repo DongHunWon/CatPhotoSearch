@@ -9,12 +9,7 @@ class SearchInput {
     $searchInput.placeholder = "고양이를 검색해보세요.|";
     $searchInput.className = "SearchInput";
 
-    const $randomBtn = document.createElement("button");
-    $randomBtn.id = "random-btn"
-    $randomBtn.innerHTML = "랜덤";
-
     $inputWrap.appendChild($searchInput);
-    $inputWrap.appendChild($randomBtn);
     $target.appendChild($inputWrap);
     $searchInput.focus();
     
@@ -28,13 +23,6 @@ class SearchInput {
     $searchInput.addEventListener("click", e => {
       $searchInput.value = ''
     });
-
-    $randomBtn.addEventListener("click", e => {
-      $searchInput.value = ''
-      document.querySelector(".loading").style.display = "block";
-      document.querySelector(".empty").style.display = "none";
-      onRandom();
-    })
 
     console.log("SearchInput created.", this);
   }
