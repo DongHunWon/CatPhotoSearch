@@ -10,7 +10,7 @@ class App {
     this.searchInput = new SearchInput({
       $target,
       onSearch: keyword => {
-        api.fetchCats(keyword).then(({ data }) => this.setState(data));
+        api.fetchCats(keyword).then(({ data }) => this.setState(data, keyword));
       }
     });
 
@@ -18,7 +18,14 @@ class App {
       onRandom: () => {
         api.random().then(({ data }) => this.setState(data));
       },
-    })
+    });
+
+    this.searchRecent = new SearchRecent({
+      $target,
+      onClick: keyword => {
+        api.fetchCats(keyword).then(({ data }) => this.setState(data, keyword));
+      }
+    });
 
     this.searchResult = new SearchResult({
       $target,
@@ -45,9 +52,10 @@ class App {
     });
   }
 
-  setState(nextData) {
+  setState(nextData, searchKeyword = "") {
     console.log(this);
     this.data = nextData;
     this.searchResult.setState(nextData);
+    if (searchKeyword) this.searchRecent.setState(searchKeyword);
   }
 }
