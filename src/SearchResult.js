@@ -26,18 +26,24 @@ class SearchResult {
     this.data = initialData;
     this.onClick = onClick;
 
-    this.render();
+    const dataLoad = JSON.parse(sessionStorage.getItem("result"));
+    if (dataLoad) {
+      this.data = dataLoad;
+      this.render();
+    };
   }
 
   setState(nextData) {
     this.data = nextData;
+    sessionStorage.setItem("result", JSON.stringify(this.data));
     this.render();
   }
 
   render() {
     if (this.data.length === 0) {
-      this.$loading.style.display = "none"
+      this.$loading.style.display = "none";
       this.$emptyData.style.display = "block";
+      this.$searchResult.innerHTML = null;
     }
     else {
       this.$loading.style.display = "none"
