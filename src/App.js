@@ -7,6 +7,8 @@ class App {
   constructor($target) {
     this.$target = $target;
 
+    this.$Theme = new Theme({ $target });
+
     this.searchInput = new SearchInput({
       $target,
       onSearch: keyword => {

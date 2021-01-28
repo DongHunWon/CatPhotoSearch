@@ -7,10 +7,22 @@
 
 html {
   box-sizing: border-box;
+  background-color: #ffffff;
+  --bg-color: #ffffff;
+  color: #000000;
+  --color: #000000;
+}
+
+html.dark {
+  background-color: #000000;
+  --bg-color: #000000;
+  color: #ffffff;
+  --color: #ffffff;
 }
 
 body * {
   font-family: Goyang;
+  
 }
 
 *,
@@ -23,6 +35,12 @@ body * {
   margin: 1.5em auto;
   max-width: 1200px;
   column-gap: 1.5em;
+}
+
+#Theme {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .inputWrap {
@@ -69,6 +87,24 @@ body * {
   grid-gap: 10px;
 }
 
+@media screen and (max-width: 992px) {
+  .SearchResult {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .SearchResult {
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .SearchResult {
+    grid-template-columns: repeat(1, minmax(250px, 1fr));
+  }
+}
+
 .SearchResult img {
   width: 100%;
   height: 100%;
@@ -110,7 +146,7 @@ body * {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: var(--bg-color);
   border: 1px solid #eee;
   border-radius: 5px;
 }
@@ -119,11 +155,14 @@ body * {
   width: 100%;
 }
 
-/* dark mode 처리
+/* dark mode 처리 */
 @media (prefers-color-scheme: dark) {
   body {
-    background-color: #000;
-    color: white;
+    background-color: var(--bg-color);
+    color: var(--color);
+  }
+  
+  .ImageInfo .content-wrapper {
+    background-color: var(--bg-color);
   }
 }
-*?
