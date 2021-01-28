@@ -42,6 +42,26 @@ body * {
   padding: 10px 15px;
 }
 
+.SearchRecent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SearchRecent .recent {
+  cursor: pointer;
+  margin: 10px;
+  padding: 0.6rem;
+  width: 6rem;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: rgb(92, 174, 255);
+  color: #ffffff;
+  border-radius: 7px;
+}
+
 .SearchResult {
   margin-top: 10px;
   display: grid;
@@ -60,6 +80,10 @@ body * {
   display: inline-block;
   margin: 0 0 1em;
   width: 100%;
+}
+
+.loading, .empty {
+  text-align: center;
 }
 
 .ImageInfo {

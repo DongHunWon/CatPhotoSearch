@@ -10,6 +10,12 @@ class SearchRecent {
     $target.appendChild(this.$searchRecent);
 
     this.onClick = onClick;
+
+    const dataLoad = JSON.parse(sessionStorage.getItem("recent"));
+    if (dataLoad) {
+      this.data = dataLoad;
+      this.render();
+    }
   };
 
   addKeyword(keyword) {
@@ -26,7 +32,8 @@ class SearchRecent {
       newData.push(keyword);
     }
 
-    this.data = newData    
+    this.data = newData;
+    sessionStorage.setItem("recent", JSON.stringify(this.data));
   } 
 
   setState(nextData) {
