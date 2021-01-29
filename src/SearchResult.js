@@ -52,19 +52,21 @@ class SearchResult {
         .map(
           cat => `
             <div class="item">
-              <img src=${cat.url} alt=${cat.name} title="${cat.name}" />
+              <img src=${cat.url} alt=${cat.name} data-id="${cat.id}" title="${cat.name}" />
             </div>
           `
         )
         .join("");
       
 
-      this.$searchResult.querySelectorAll(".item").forEach(($item, index) => {
-        $item.addEventListener("click", () => {
-          this.onClick(this.data[index]);
+      document.querySelector("article").addEventListener("click", (e) => {
+        this.onClick({
+          id: e.target.dataset.id, 
+          url: e.target.src,
+          name: e.target.title
         });
       });
-
+      
       // 스크롤 바닥일 때 데이터 로딩
       // window.addEventListener("scroll", () => {
       //   if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
