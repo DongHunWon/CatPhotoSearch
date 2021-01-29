@@ -20,15 +20,23 @@ class ImageInfo {
   }
 
   modalClose() {
-    document.addEventListener("mousedown", (event) => {
+    document.addEventListener("mouseup", (event) => {
       if (event.target.className === "ImageInfo" || event.target.className === "close") {
-        this.$imageInfo.style.display = "none";
+        this.$imageInfo.style.animation = "fadeout 1s";
+        setTimeout(() => {
+          this.$imageInfo.style.display = "none";
+          this.$imageInfo.style.animation = "fadein 1s";
+        }, 500);
       }
     });
 
     document.addEventListener("keyup", e => {
       if (e.keyCode === 27) {
-        this.$imageInfo.style.display = "none";
+        this.$imageInfo.style.animation = "fadeout 1s";
+        setTimeout(() => {
+          this.$imageInfo.style.display = "none";
+          this.$imageInfo.style.animation = "fadein 1s";
+        }, 500);
       }
     });
   }
