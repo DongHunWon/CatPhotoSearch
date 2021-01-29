@@ -4,7 +4,7 @@ class SearchRecent {
   onClick = null;
 
   constructor({ $target, onClick }) {
-    this.$searchRecent = document.createElement("div");
+    this.$searchRecent = document.createElement("nav");
     this.$searchRecent.className = "SearchRecent";
 
     $target.appendChild(this.$searchRecent);

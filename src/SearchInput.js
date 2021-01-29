@@ -10,9 +10,10 @@ class SearchInput {
     $searchInput.className = "SearchInput";
 
     $inputWrap.appendChild($searchInput);
-    $target.appendChild($inputWrap);
+    document.querySelector('#Theme').parentNode.appendChild($inputWrap);
     $searchInput.focus();
     
+
     $searchInput.addEventListener("keyup", e => {
       if (e.keyCode === 13) {
         document.querySelector(".loading").style.display = "block";

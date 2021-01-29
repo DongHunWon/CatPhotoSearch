@@ -6,7 +6,7 @@ class SearchResult {
   onClick = null;
 
   constructor({ $target, initialData, onClick }) {
-    this.$searchResult = document.createElement("div");
+    this.$searchResult = document.createElement("article");
     this.$searchResult.className = "SearchResult";
 
     this.$loading = document.createElement("div");
@@ -64,6 +64,13 @@ class SearchResult {
           this.onClick(this.data[index]);
         });
       });
+
+      // 스크롤 바닥일 때 데이터 로딩
+      // window.addEventListener("scroll", () => {
+      //   if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
+
+      //   }
+      // });
     }
   }
 }

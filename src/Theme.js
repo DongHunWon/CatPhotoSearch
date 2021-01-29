@@ -6,6 +6,7 @@ class Theme {
 
   constructor({ $target }) {
     this.isDark  = window.matchMedia && window.matchMedia('(prefers-color-scheme: Dark)').matches
+    const $headers = document.createElement("header");
 
     const $Wrap = document.createElement("label");
     $Wrap.id = "Theme";
@@ -14,14 +15,14 @@ class Theme {
     $toggle.type = "checkbox";
     $toggle.id = "Theme-change";
     this.$toggle = $toggle;
-
     const $toggleTxt = document.createElement("span");
     $toggleTxt.id = "Theme-txt";
     this.$toggleTxt = $toggleTxt;
 
     $Wrap.appendChild($toggle);
     $Wrap.appendChild($toggleTxt);
-    $target.appendChild($Wrap);
+    $headers.appendChild($Wrap);
+    $target.appendChild($headers);
 
     $toggle.addEventListener("click", e => {
       this.setState(e.target.checked);
