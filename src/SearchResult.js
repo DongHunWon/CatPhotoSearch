@@ -40,7 +40,7 @@ class SearchResult {
   }
 
   render() {
-    if (this.data.length === 0) {
+    if (Array.isArray(this.data) && this.data.length === 0) {
       this.$loading.style.display = "none";
       this.$emptyData.style.display = "block";
       this.$searchResult.innerHTML = null;
@@ -58,15 +58,16 @@ class SearchResult {
         )
         .join("");
       
-
       document.querySelector("article").addEventListener("click", (e) => {
-        this.onClick({
-          id: e.target.dataset.id, 
-          url: e.target.src,
-          name: e.target.title
-        });
+        if (e.target.parentNode.className === "item") {
+          this.onClick({
+            id: e.target.dataset.id, 
+            url: e.target.src,
+            name: e.target.title
+          });
+        }
       });
-      
+
       // 스크롤 바닥일 때 데이터 로딩
       // window.addEventListener("scroll", () => {
       //   if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {
